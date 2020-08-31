@@ -1,7 +1,3 @@
-class LinkedList: 
-    def __init__(self):
-        self.head = None
-
 
 class HashTableEntry:
     """
@@ -43,7 +39,7 @@ class HashTable:
         Implement this.
         """
         # Your code here
-        pass
+        return len(self.storage)
 
 
     def get_load_factor(self):
@@ -53,7 +49,8 @@ class HashTable:
         Implement this.
         """
         # Your code here
-        pass
+        return self.count / len(self.storage)
+
 
 
     def fnv1(self, key):
@@ -64,6 +61,7 @@ class HashTable:
         """
 
         # Your code here
+        pass
 
 
     def djb2(self, key):
@@ -73,6 +71,12 @@ class HashTable:
         Implement this, and/or FNV-1.
         """
         # Your code here
+        hash = 5381
+
+        for char in key:
+            hash = (hash * 33) + ord(char)
+
+        return hash
 
 
     def hash_index(self, key):
@@ -92,7 +96,11 @@ class HashTable:
         Implement this.
         """
         # Your code here
-        pass
+        index = self.hash_index(key)
+
+        # storing the value of the index
+        self.storage[index] = value
+        self.count += 1
 
 
     def delete(self, key):
@@ -104,6 +112,12 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        index = self.hash_index(key)
+
+        if self.storage[index] is None:
+            print(f"Index is not found.")
+        else:
+            self.storage[index] = None
 
 
     def get(self, key):
@@ -115,6 +129,9 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        index = self.hash_index(key)
+
+        return self.storage[index]
 
 
     def resize(self, new_capacity):
@@ -125,6 +142,7 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        pass
 
 
 
