@@ -1,3 +1,8 @@
+class LinkedList: 
+    def __init__(self):
+        self.head = None
+
+
 class HashTableEntry:
     """
     Linked List hash table key/value pair
@@ -22,6 +27,9 @@ class HashTable:
 
     def __init__(self, capacity):
         # Your code here
+        self.capacity = capacity
+        self.storage = [None] * capacity
+        self.count = 0
 
 
     def get_num_slots(self):
@@ -35,6 +43,7 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        pass
 
 
     def get_load_factor(self):
@@ -44,6 +53,7 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        pass
 
 
     def fnv1(self, key):
@@ -82,6 +92,7 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        pass
 
 
     def delete(self, key):
