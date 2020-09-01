@@ -96,10 +96,22 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        # index = self.hash_index(key)
+
+        # # storing the value of the index
+        # self.storage[index] = value
+        # self.count += 1
+
+        # Day 2 code - PUT
         index = self.hash_index(key)
 
-        # storing the value of the index
-        self.storage[index] = value
+        if self.storage[index] != None:
+            putHash = HashTableEntry(key, value)
+            putHash.next = self.storage[index]
+            self.storage[index] = putHash
+        else:
+            self.storage[index] = HashTableEntry(key, value)
+
         self.count += 1
 
 
@@ -112,12 +124,30 @@ class HashTable:
         Implement this.
         """
         # Your code here
-        index = self.hash_index(key)
+        # index = self.hash_index(key)
 
-        if self.storage[index] is None:
-            print(f"Index is not found.")
-        else:
-            self.storage[index] = None
+        # if self.storage[index] is None:
+        #     print(f"Index is not found.")
+        # else:
+        #     self.storage[index] = None
+
+
+        # Day 2 code - DELETE
+        deleted = self.hash_index(key)
+        current = self.storage[deleted]
+
+        while current.next != None:
+            if current.key == key:
+                current.value = None
+                return 
+            else:
+                current = current.next
+
+        if current.next == None:
+            if current.key == key:
+                current.value = None
+        self.get_load_factor()
+        self.count -= 1
 
 
     def get(self, key):
@@ -129,9 +159,22 @@ class HashTable:
         Implement this.
         """
         # Your code here
-        index = self.hash_index(key)
+        # index = self.hash_index(key)
 
-        return self.storage[index]
+        # return self.storage[index]
+
+
+        # Day 2 code - GET
+        index = self.hash_index(key)
+        current = self.storage[index]
+
+        while current:
+            if current.key != key:
+                current = current.next
+            else:
+                return current.value
+
+        return None
 
 
     def resize(self, new_capacity):
@@ -142,8 +185,20 @@ class HashTable:
         Implement this.
         """
         # Your code here
-        pass
+        new_size = self.storage
+        self.capacity = new_size
 
+        self.storage = [None] * new_capacity
+
+        for i in new_size:
+            if new_size is not None:
+                current = i
+
+            while current:
+                self.put(current.key, current.value)
+                current = current.next
+
+        self.count = new_capacity
 
 
 if __name__ == "__main__":

@@ -17,7 +17,7 @@ def danceCount(array):
     # created for loop passing the key/value pairs into the dictionary
     for key, value in dict.items():
         # printing the key/value
-        print (key, value)
+        print ("'% s':% d"% (key, value))
 
 # returning the entire function to show the key/value pairs
 danceCount(array)
