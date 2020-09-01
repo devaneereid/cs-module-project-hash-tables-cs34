@@ -186,7 +186,7 @@ class HashTable:
         """
         # Your code here
         new_size = self.storage
-        self.capacity = new_size
+        self.capacity = new_capacity
 
         self.storage = [None] * new_capacity
 
