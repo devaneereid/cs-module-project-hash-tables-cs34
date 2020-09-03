@@ -1,6 +1,5 @@
 import random
 
-# this will only read the 'input.txt' file if I move it out of the markov folder...
 with open("input.txt") as f:
     words = f.read()
 
